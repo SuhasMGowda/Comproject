@@ -98,12 +98,3 @@ Button2.grid(row=3,column=2)
 
 Button4=Button(login,text="      STAFF      ",fg="black",font=("calidri",10),bg=None,cursor="hand2",command=staff)
 Button4.grid(row=3,column=3)
-
-
-
-#db=con.connect(host="localhost",user="root",passwd="",database="Data")
-#mycursor=db.cursor()
-#mycursor.execute("DELETE Login")
-#mycursor.execute("CREATE TABLE Login(Username VARCHAR(50),Password VARCHAR(16)),uniqueid int PRIMARY KEY AUTO_INCREMENT")
-    
-#db.colse()    
