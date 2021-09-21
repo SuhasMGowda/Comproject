@@ -1,66 +1,109 @@
-from tkinter import *
 from tkinter import ttk
-converter = Tk()
-converter.geometry("700x275")
-converter.title("Headache")
-OPTIONS = {
-    "UAE (UAE Dirhams)":20.11,
-    "United States (US Dollars)":74.01,
-    "Europe (Euros)":90.41,
-    "United Kingdom  (Pound Sterlings)":98.59,
-    "Canada  (Can Dollars)":57.57,
-    "Australia  (Australian Dollars)":55.64,
-    "Switzerland  (Swiss Francs)":69.62,
-    "Denmark (Danish Krone)":12.15,
-    "Norway  (Norwegian Krones)":8.53,
-    "Sweden  (Swedish Kronas)":8.94,
-    "Hong Kong  (HK Dollars)":9.51,
-    "Egypt (Egyptian Pound)":4.72,
-    "Japan (Yenes)":0.71,
-    "Russia( Ruble)":0.98,
-    "Indonesia (Rupiahs)":0.005,
-    "Singapore (Singapore Dollars)":1,
-    "South Korean (South Korean Wons)":0.069,
-    "South Africa (South African Rand)":4.99,
-    "China (Yuan)":11.26,
-    "India  (Indian Rupees)":1,
-    "Pakistan (rupee)":0.459,
-    "Sri Lanka (rupee)":0.39,
-    "Mexico (Mexican Peso)":3.67,
-    "Brazil (Brazilian Real)":14.388
-    }
+from tkinter import *
+from tkinter import messagebox
+import mysql.connector as con
+    
 def ok():
-    price = rupees.get()
-    answer  = variable.get()
-    DICT = OPTIONS.get(answer,None)
-    converted = float(price)/float(DICT)
-    result.delete(1.0,END)
-    result.insert(INSERT,"Price In: ",INSERT,answer,INSERT," = ",
-                  INSERT,converted)
-appName = Label(converter,text="Currency",
-                font=("algerian",25,"bold"),fg="dark blue")
-appName.grid(row=0,column=0,padx=10)
+    messagebox.showinfo("Done","Account Created")
 
-appName = Label(converter,text="Convertor",
-                font=("algerian",25,"bold"),fg="dark blue")
-appName.grid(row=0,column=2,ipadx=10)
 
-result= Text(converter,height=5,width=50,font=("arial",10),bd=5)
-result.grid(row=5,columnspan=10,padx=3)
-india = Label(converter,text="Choose Country:",
-              font=("Chiller",20,"bold"),fg="red")
-india.grid(row=3,column=0)
-rupees = Entry(converter,font=("calibri",20))
-rupees.grid(row=2,column=1)
-choice = Label(converter,text="Indian Rupees:",
-              font=("Chiller",20,"bold"),fg="red")
-choice.grid(row=2,column=0)
-variable = StringVar(converter)
-variable.set(None)
-option = OptionMenu(converter,variable,*OPTIONS)
-option.grid(row=3,column=1,sticky="ew")
-button = Button(converter,text="Convert",fg="yellow",
-                font=("Ink Free",20,"bold"),bg="red",command=ok)
-button.grid(row=3,column=2)
-mainloop()
-#end
+def staff():
+    staff=Tk()
+    staff.geometry("700x500")
+    staff.title("STAFF LOGIN")
+    staff.iconbitmap(r'C:\Users\MANJU\AppData\Local\Programs\Python\Python39\favicon.ico')
+    staff1=Label(staff,text="Phones 4 U",
+               font=("algerian",50,"bold"),fg="black")
+    staff1.grid(row=0,column=2)
+
+    staffusername=Label(staff,text="Your Username:",font=("calibri",25),fg="black")
+    staffusername.grid(row=2,column=1)
+
+    staffpassword=Label(staff,text="Password:",font=("calibri",25),fg="black")
+    staffpassword.grid(row=3,column=1)
+
+    staffeuname=Entry(staff,font=("calibri",25),bd=10) 
+    staffeuname.grid(row=2,column=2)
+
+    staffepass=Entry(staff,font=("calibri",25),bd=10,show="*")
+    staffepass.grid(row=3,column=2)
+
+    Button5=Button(staff,text="Login",fg="black",cursor="hand2",font=("calidri",10),bg="yellow")
+    Button5.grid(row=5,column=2)
+
+    staffunq=Label(staff,text="Unique Number:",font=("calibri",25),fg="black")
+    staffunq.grid(row=1,column=1)
+
+    staffunqe=Entry(staff,font=("calibri",25),bd=10) 
+    staffunqe.grid(row=1,column=2)
+
+    
+def New():
+    New=Tk()
+    New.geometry("700x500")
+    New.title("New Account")
+    New.iconbitmap(r'C:\Users\MANJU\AppData\Local\Programs\Python\Python39\favicon.ico')
+    NewName=Label(New,text="Phones 4 U",
+               font=("algerian",50,"bold"),fg="black")
+    NewName.grid(row=0,column=2)
+
+    Newusername=Label(New,text="Your New Username:",font=("calibri",25),fg="black")
+    Newusername.grid(row=1,column=1)
+
+    Newpassword=Label(New,text="Password:",font=("calibri",25),fg="black")
+    Newpassword.grid(row=2,column=1)
+
+    Neweuname=Entry(New,font=("calibri",25),bd=10) 
+    Neweuname.grid(row=1,column=2)
+
+    Newepass=Entry(New,font=("calibri",25),bd=10,show="*")
+    Newepass.grid(row=2,column=2)
+
+    Newpassword1=Label(New,text="Re-Enter Password:",font=("calibri",25),fg="black")
+    Newpassword1.grid(row=3,column=1)
+
+    Newepass1=Entry(New,font=("calibri",25),bd=10,show="*")
+    Newepass1.grid(row=3,column=2)
+
+    Button3=Button(New,text="Create Account",fg="black",cursor="hand2",font=("calidri",10),bg="yellow",command=ok)
+    Button3.grid(row=4,column=2)
+
+
+
+login=Tk()
+login.geometry("700x500")
+login.title("Project")
+login.iconbitmap(r'C:\Users\MANJU\AppData\Local\Programs\Python\Python39\favicon.ico')
+Name=Label(login,text="Phones 4 U",font=("algerian",50,"bold"),fg="black")
+Name.grid(row=0,column=2)
+
+username=Label(login,text="Username:",font=("calibri",25),fg="black")
+username.grid(row=1,column=1)
+
+password=Label(login,text="Password:",font=("calibri",25),fg="black")
+password.grid(row=2,column=1)
+
+
+euname=Entry(login,font=("calibri",25),bd=10)
+euname.grid(row=1,column=2)
+
+epass=Entry(login,font=("calibri",25),bd=10,show="*")
+epass.grid(row=2,column=2)
+
+Button1=Button(login,text="Create Account",fg="black",font=("calidri",10),bg=None,cursor="hand2",command=New)
+Button1.grid(row=3,column=1)
+
+Button2=Button(login,text="Login",fg="black",font=("calidri",10),bg="Yellow",cursor="hand2")
+Button2.grid(row=3,column=2)
+
+Button4=Button(login,text="      STAFF      ",fg="black",font=("calidri",10),bg=None,cursor="hand2",command=staff)
+Button4.grid(row=3,column=3)
+
+
+
+#db=con.connect(host="localhost",user="root",passwd="",database="Data")
+#mycursor=db.cursor()
+#mycursor.execute("DELETE Login")
+#mycursor.execute("CREATE TABLE Login(Username VARCHAR(50),Password VARCHAR(16)),uniqueid int PRIMARY KEY AUTO_INCREMENT")
+    
+#db.colse()    
